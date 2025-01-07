@@ -71,11 +71,11 @@ step5: On the client, use the showmount command to confirm the NFS server is exp
 
 note: On which port does nfs run:
 
-                         (1) 2029	
-				                 (2)  111
-How to check port run:
-                    sudo netstat -tuln | grep 2049
-				            sudo netstat -tuln | grep 111
+(1) 2049	
+(2)  111
+How to check port used by service:
+sudo netstat -tuln | grep 2049
+sudo netstat -tuln | grep 111
 
 Note:   In AWS, the service that provides NFS (Network File System) functionality is Amazon Elastic File System (EFS)
 
