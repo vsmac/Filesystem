@@ -31,7 +31,7 @@ step6: Add the following line to export the directory:
 
   /mnt/nfs_share *(rw,sync,no_subtree_check)  NOTE: Replace * with specific client IP(s) or CIDR ranges for better security
   rw: Stands for Read/Write
-  sync: Requires changes to be written to the disk before they are applied.
+  sync: Requires changes to be written to the disk before they are applied
   No_subtree_check: Eliminates subtree checking
 
 
