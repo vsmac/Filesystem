@@ -30,6 +30,10 @@ step5: Configure the Exported Directory
 step6: Add the following line to export the directory:
 
   /mnt/nfs_share *(rw,sync,no_subtree_check)  note: Replace * with specific client IP(s) or CIDR ranges for better security
+  rw: Stands for Read/Write.
+  sync: Requires changes to be written to the disk before they are applied.
+  No_subtree_check: Eliminates subtree checking.
+
 
 step7: Apply the Configuration
 
@@ -66,8 +70,12 @@ step5: On the client, use the showmount command to confirm the NFS server is exp
 note: On which port does nfs run:
 
                          (1) 2029	
-				         (2)  111
+				                 (2)  111
 How to check port run:
                     sudo netstat -tuln | grep 2049
-				    sudo netstat -tuln | grep 111
+				            sudo netstat -tuln | grep 111
+
+Note:   In AWS, the service that provides NFS (Network File System) functionality is Amazon Elastic File System (EFS)
+
+NFS (Network File System) is used to allow multiple systems or servers to share and access files over a network as if they were on a local disk. 
 
