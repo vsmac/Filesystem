@@ -1,0 +1,103 @@
+# what is lamp
+
+LAMP: A Web Development Technology Stack
+
+LAMP is a popular stack of open-source software used to create and host dynamic websites and web applications. 
+The term is an acronym representing the components of the stack:
+
+L - Linux
+The operating system that provides the foundation for the stack. It is stable, secure, and widely used in server environments
+
+A - Apache ya nginx
+A robust and reliable web server that handles HTTP requests and serves web pages to users. Apache is highly configurable and supports various modules for extended functionality
+
+M -Mysql
+The database management system used to store and manage website or application data. MySQL is widely supported and known for its performance and scalability
+
+P -Php
+A server-side scripting language used to generate dynamic web pages. PHP can interact with MySQL databases and embed HTML to create interactive and functional websites
+
+How to setup and install lamp
+Step 1: Update the System
+
+ sudo apt update
+
+Step 2: Install Nginx
+
+ sudo apt install nginx -y
+
+Start and enable Nginx
+
+ sudo systemctl start nginx
+ sudo systemctl enable nginx
+
+Step 1: Install MySQL
+
+ sudo apt install mysql-server -y
+
+#Log in to MySQL to confirm installation
+
+ sudo mysql -u root -p
+
+Step 2: Create a New Database
+
+ CREATE DATABASE database_name;
+Note: Replace database_name with the name you want for your database
+
+Step 3: Verify the Database Creation
+
+ SHOW DATABASES;
+
+GRANT ALL PRIVILEGES ON your_database_name.* TO 'your_username'@'localhost' IDENTIFIED BY 'your_password';
+
+GRANT ALL PRIVILEGES: Give full privileges
+
+ON your_database_name.*: Applies to all tables in the specified database
+
+TO 'your_username'@'localhost': Specifies the user and the host from which the user can connect
+
+IDENTIFIED BY 'your_password': Sets the password for the user
+
+Step 4: Flush Privileges (Important)
+
+ FLUSH PRIVILEGES;
+
+Step 5: Exit MySQL
+
+ Exit
+
+Step 1: Install PHP and PHP-FPM
+
+ sudo apt install php-fpm php-mysql php-cli php-curl php-xml php-mbstring -y
+
+Step 2: Configure Nginx to Use PHP
+Edit the default Nginx configuration file:
+
+ sudo vim /etc/nginx/sites-available/default
+
+Find the location ~ \.php$ block, and ensure it is configured like this
+
+  location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+}
+
+Step 3: Restart Nginx and PHP-FPM
+  
+ sudo systemctl restart nginx
+ sudo systemctl restart php7.4-fpm 
+
+Step 4: Test PHP
+To test that PHP is working correctly with Nginx, create a PHP info file in the web root
+
+ sudo vim /var/www/html/info.php
+
+Add the following content:
+
+ <?php
+phpinfo();
+?>
+
+note: Now, open your web browser and navigate to http://your-server-ip/info.php
