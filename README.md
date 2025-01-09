@@ -50,6 +50,7 @@ step8: Restart the NFS server
 step1: Install NFS Client (on Client Machine)
 
  sudo apt update
+ 
  sudo apt install nfs-common
 
 step2: Mount the NFS Share (on Client Machine)
