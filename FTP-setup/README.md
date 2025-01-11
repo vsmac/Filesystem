@@ -75,7 +75,7 @@ Default Ports for ftp
    2. Port 20 (Data Port): Used for transferring files in Active Mode.
 
 
-# FTP INSTALLATION
+                      # FTP INSTALLATION #
 
 # Updates the package list to ensure you have the latest versions available.
 sudo apt update 
